@@ -1,8 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from "axios";
+import api from "./constants/api";
 
 function App() {
+  const checkConnection = async (): Promise<void> => {
+    const {data}  = await axios.get(api.CONNECTION_TEST)
+    console.log(data)
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +24,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={checkConnection}>Check Connection</button>
       </header>
     </div>
   );
